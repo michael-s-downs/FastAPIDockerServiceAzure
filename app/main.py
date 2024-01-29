@@ -2,9 +2,9 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 
-class Item(BaseModel):
-    name: str
-    price: float
+class Query(BaseModel):
+    text: str
+    role: str
 
 
 app = FastAPI()
@@ -21,5 +21,5 @@ async def read_item(name):
 
 
 @app.post("/items/")
-async def create_item(item: Item):
-    return {"message": f"{item.name} is priced at £{item.price}"}
+async def create_query(query: Query):
+    return {"message": "You asked:  {query.text} to be answered using {query.role}"}
