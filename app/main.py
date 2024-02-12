@@ -20,6 +20,6 @@ async def read_item(name):
     return {"message": f"Hello {name}, how are you?"}
 
 
-@app.post("/items/")
+@app.post("/query/")
 async def create_query(query: Query):
-    return {"message": "You asked:  {query.text} to be answered using {query.role}"}
+    return {"message": f"You asked: {query.text} to be answered using role: {query.role}"}
