@@ -23,3 +23,7 @@ async def read_item(name):
 @app.post("/query/")
 async def create_query(query: Query):
     return {"message": f"You asked: {query.text} to be answered using role: {query.role}"}
+
+@app.get("/refreshdb/")
+async def refresh_db():
+    #do something...
