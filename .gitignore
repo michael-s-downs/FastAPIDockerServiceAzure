@@ -1,3 +1,15 @@
+#Word files
+*.docx
+
+#config file
+config.json
+
+#ignore VSCode
+.vscode
+
+# ignore the vector databases created from the Aspirent Confluence Wiki DB
+/AspirentWikiDB/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
