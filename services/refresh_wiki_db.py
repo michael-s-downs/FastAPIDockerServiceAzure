@@ -2,15 +2,16 @@ from extensions.custom_confluence_loader import CustomConfluenceLoader
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
-import app.config.config as config
+from config import config
 from utils import utility 
-from models import HelpDBState
+from models import help_db_state
 
 
-def getWikiDBInfo() -> HelpDBState:
+
+def getWikiDBInfo() -> help_db_state:
     return utility.getHelpDBState(config.HELP_WIKI_DB_DIR)
 
-def refreshWikiDB() -> HelpDBState:
+def refreshWikiDB() -> help_db_state:
 
     # Create OpenAI embeddings
     openai_embeddings = OpenAIEmbeddings()

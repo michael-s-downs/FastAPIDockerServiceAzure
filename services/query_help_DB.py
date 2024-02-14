@@ -1,4 +1,6 @@
-from models import Query, Answer, SourceDocument   
+from models.query import Query
+from models.answer import Answer
+from models.source_document import SourceDocument   
 
 #CURRENTLY KEEPING AT A 'MOCK' UNTIL READY TO PLUG IN BUSINESS LOGIC (TESTING build, refreshWikiDB service first)
 def getAnswer(query: Query) -> Answer:

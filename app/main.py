@@ -1,6 +1,8 @@
 from fastapi import FastAPI
-from models import Query, Answer, HelpDBState
-from services import query_help_DB, refreshWikiDB
+from models.query import Query
+from models.answer import Answer
+from models.help_db_state import HelpDBState
+from services import query_help_db, refresh_wiki_db
 
 app = FastAPI()
 
@@ -25,16 +27,16 @@ async def hello_name(name):
 #POST a Gen-AI Query Model and get back an Answer Model
 @app.post("/query", response_model=Answer)
 async def create_query(query: Query):
-    return query_help_DB.getAnswer(query)
+    return query_help_db.getAnswer(query)
 
 #GET a HelpDBState model describing the current state of the Help DB
 @app.get("/gethelpdbinfo", response_model=HelpDBState)
 async def get_help_db_info():
-    return refreshWikiDB.getWikiDBInfo()
+    return refresh_wiki_db.getWikiDBInfo()
 
 #GET Endpoint-Trigger to refresh the Help DB; Returns a HelpDBState Model to verify isExistent with the current lastRefresh time 
 @app.get("/refreshhelpdb", response_model=HelpDBState)
 async def refresh_help_db():
     #do something...
-    return refreshWikiDB.refreshWikiDB()
+    return refresh_wiki_db.refreshWikiDB()
 

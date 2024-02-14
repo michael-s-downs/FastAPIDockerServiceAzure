@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import List
-from SourceDocument import SourceDocument  
+from models.source_document import SourceDocument  
 
 class Answer(BaseModel):
     user_question: str

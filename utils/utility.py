@@ -1,7 +1,7 @@
 import datetime
 import os
 import shutil
-from models import HelpDBState
+from models.help_db_state import HelpDBState
 
 def delete_folder_if_exists(folder_path):
     if is_folder_existant(folder_path):
@@ -36,7 +36,7 @@ def get_last_update_timestamp(folder_path: str) -> str:
                 latest_mod_time = mod_time
 
     # Convert the latest modification time to a datetime object
-    last_update_datetime = datetime.fromtimestamp(latest_mod_time)
+    last_update_datetime = datetime.date.fromtimestamp(latest_mod_time)
 
     # Format the datetime object as a string in the format "YYYY-MM-DD HH:MM:SS"
     last_update_str = last_update_datetime.strftime("%Y-%m-%d %H:%M:%S")
@@ -47,7 +47,7 @@ def getHelpDBState(folder_path) -> HelpDBState:
     if is_folder_existant(folder_path):
         folder_size = get_folder_size(folder_path)
         last_update_str = get_last_update_timestamp(folder_path)
-        return HelpDBState(True, folder_size, last_update_str)
+        return HelpDBState(isDBPresent=True, size=folder_size, lastUpdated=last_update_str)
     else:
-        return HelpDBState(False,0) 
-           
+        return HelpDBState(isDBPresent=False,size=0,lastUpdated="Never Created") 
+        

@@ -16,10 +16,11 @@ FastAPIDockerServiceAzure/
 │   ├── __init__.py
 │   ├── query.py
 │   ├── answer.py
-│   └── helpdbstate.py
+│   └── help_db_state.py
 ├── services/
 │   ├── __init__.py
-│   └── query_help_DB.py
+│   |── query_help_db.py
+│   |── refresh_wiki_db.py
 ├── util/
 │   ├── __init__.py
 │   └── utility.py
