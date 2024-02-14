@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from models.query import Query
-from models.answer import Answer
+from models.query_model import Query
+from models.answer_model import Answer
 from models.help_db_state import HelpDBState
 from services import query_help_db, refresh_wiki_db
 
