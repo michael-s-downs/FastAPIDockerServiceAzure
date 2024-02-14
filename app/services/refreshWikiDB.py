@@ -2,7 +2,7 @@ from extensions.custom_confluence_loader import CustomConfluenceLoader
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
-import config
+import app.config.config as config
 from utils import utility 
 from models import HelpDBState
 
