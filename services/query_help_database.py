@@ -1,4 +1,3 @@
-import chromadb
 from models.query_model import Query
 from models.answer_model import Answer
 from models.source_document import SourceDocument  
