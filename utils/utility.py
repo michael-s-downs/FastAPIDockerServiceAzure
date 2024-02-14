@@ -36,7 +36,7 @@ def get_last_update_timestamp(folder_path: str) -> str:
                 latest_mod_time = mod_time
 
     # Convert the latest modification time to a datetime object
-    last_update_datetime = datetime.date.fromtimestamp(latest_mod_time)
+    last_update_datetime = datetime.datetime.now()
 
     # Format the datetime object as a string in the format "YYYY-MM-DD HH:MM:SS"
     last_update_str = last_update_datetime.strftime("%Y-%m-%d %H:%M:%S")

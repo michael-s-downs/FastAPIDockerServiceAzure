@@ -11,4 +11,4 @@ OPEN_API_KEY = config["openai_api_key"]
 
 #Some Global Variables for finding the database (or queries for refreshing it) that must be dynamically determined at run-time
 CODE_ABS_PATH: str = os.path.dirname(os.path.abspath(__file__))
-HELP_WIKI_DB_DIR: str = os.path.join(CODE_ABS_PATH, "AspirentWikiDB")
+HELP_WIKI_DB_DIR: str = os.path.join(CODE_ABS_PATH, "..", "AspirentWikiDB")
