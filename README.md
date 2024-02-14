@@ -9,33 +9,26 @@ The Structure of the project is roughly conventional:
 
 FastAPIDockerServiceAzure/
 │
-├── app/                        # Application specific modules
-│   ├── __init__.py             # Makes app a Python package
-│   ├── main.py                 # Entry point for the application
-│   ├── models/                 # Data models used by API endpoints & services
-│   │   ├── __init__.py         # Makes models a Python package
-│   │   └── example_model.py    # Example model
-│   │
-│   ├── services/               # Business logic for APIs
-│   │   ├── __init__.py         # Makes services a Python package
-│   │   └── example_service.py  # API service handler
-│   │
-│   └── utils/                  # Utility functions
-│   │   ├── __init__.py         # Makes utils a Python package
-│   │   └── utility.py          # Utility class
-│   │
-│   └── config/                 # config files & class
-│       ├── __init__.py         # Makes utils a Python package
-│       ├── config.json         # Static config items
-│       └── config.py           # config class for constructing constants by environment
-│
-├── extensions/                 # Custom classes to extend libraries
-│   ├── __init__.py             # Makes extensions a Python package
-│   └── custom_extension.py     # Custom class example
-│
-├── tests/                      # Unit tests
-│   ├── __init__.py             # Makes tests a Python package
-│   └── test_example.py         # Example test
-│
-├── requirements.txt            # Project dependencies
-└── setup.py                    # Setup script for the package distribution  (MAYBE)
+├── app/
+│   ├── __init__.py
+│   └── main.py
+├── models/
+│   ├── __init__.py
+│   ├── query.py
+│   ├── answer.py
+│   └── helpdbstate.py
+├── services/
+│   ├── __init__.py
+│   └── query_help_DB.py
+├── util/
+│   ├── __init__.py
+│   └── utility.py
+├── extensions/
+│   ├── __init__.py
+│   └── custom_confluence_loader.py
+├── config/
+│   ├── __init__.py
+│   └── config.py
+└── tests/
+    ├── __init__.py
+    └── some_future_test.py
