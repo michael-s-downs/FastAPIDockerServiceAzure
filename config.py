@@ -7,6 +7,7 @@ with open('config.json', 'r') as config_file:
 HELP_WIKI_USER_NAME = config["help_wiki_user_name"]
 HELP_WIKI_API_KEY = config["help_wiki_api_key"]
 HELP_WIKI_URL = config["help_wiki_url"]
+OPEN_API_KEY = config["open_api_key"]
 
 #Some Global Variables for finding the database (or queries for refreshing it) that must be dynamically determined at run-time
 CODE_ABS_PATH: str = os.path.dirname(os.path.abspath(__file__))
