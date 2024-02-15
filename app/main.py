@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-from models.query import Query
-from models.answer import Answer
+from models.query_model import Query
+from models.answer_model import Answer
 from models.help_db_state import HelpDBState
-from services import query_help_db, refresh_wiki_db
+from services import query_help_database, refresh_wiki_db
 
 app = FastAPI()
 
@@ -27,7 +27,7 @@ async def hello_name(name):
 #POST a Gen-AI Query Model and get back an Answer Model
 @app.post("/query", response_model=Answer)
 async def create_query(query: Query):
-    return query_help_db.getAnswer(query)
+    return query_help_database.getAnswer(query)
 
 #GET a HelpDBState model describing the current state of the Help DB
 @app.get("/gethelpdbinfo", response_model=HelpDBState)

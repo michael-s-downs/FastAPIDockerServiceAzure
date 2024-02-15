@@ -1,6 +1,5 @@
-import chromadb
-from models.query import Query
-from models.answer import Answer
+from models.query_model import Query
+from models.answer_model import Answer
 from models.source_document import SourceDocument  
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
