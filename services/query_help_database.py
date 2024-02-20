@@ -4,11 +4,15 @@ from models.source_document import SourceDocument
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
-from langchain.chat_models import ChatOpenAI
+#from langchain.chat_models import ChatOpenAI
 from config import config
 from models.source_document import SourceDocument  
+from dotenv import load_dotenv 
+from langchain_openai import AzureChatOpenAI
 
-#CURRENTLY KEEPING AT A 'MOCK' UNTIL READY TO PLUG IN BUSINESS LOGIC (TESTING build, refreshWikiDB service first)
+openai_api_version="2024-02-15-preview"
+deployment_name='CokeSim-gpt-4-0125-Preview' 
+
 def getAnswer(query: Query) -> Answer:
     
     openai_embeddings = OpenAIEmbeddings()
@@ -18,11 +22,17 @@ def getAnswer(query: Query) -> Answer:
     # Create a retriever from the Chroma vector database
     retriever = vectordb.as_retriever(search_kwargs={"k": 30})
 
-    # Use a ChatOpenAI model
-    llm = ChatOpenAI(model_name='gpt-4-turbo-preview')
+    # Use a ChatOpenAI model for PERSONAL ACCT LLM use
+    #llm = ChatOpenAI(model_name='gpt-4-turbo-preview')
 
+    #new code to use an AzureChatOpenAI model for AZURE LLM instead...
+
+    endpointmodel = AzureChatOpenAI(
+    azure_deployment=deployment_name,
+    openai_api_version=openai_api_version
+)
     # Create a RetrievalQA from the model and retriever
-    qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever, return_source_documents=True)
+    qa = RetrievalQA.from_chain_type(llm=endpointmodel, chain_type="stuff", retriever=retriever, return_source_documents=True)
 
     # Run the prompt and return the response
     response = qa(query.user_question)
@@ -38,26 +48,3 @@ def getAnswer(query: Query) -> Answer:
     )
     
     return answer
-
-#TO-DO SECTION:  INCORPORATE THIS BUSINESS LOGIC FROM ORIGINAL POC Script
-        # vectordb = Chroma(embedding_function=openai_embeddings, persist_directory=DB_DIR)
-
-        # # Create a retriever from the Chroma vector database
-        # retriever = vectordb.as_retriever(search_kwargs={"k": 30})
-
-        # # Use a ChatOpenAI model
-        # llm = ChatOpenAI(model_name='gpt-4-turbo-preview')
-
-        # # Create a RetrievalQA from the model and retriever
-        # qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever, return_source_documents=True)
-
-        # # Run the prompt and return the response
-        # response = qa(user_question)
-        # st.subheader("Answer:")
-        # st.write(response["result"])
-        # st.subheader("Top Sources Used:")
-        # for source_doc in response["source_documents"]:
-        #     title = source_doc.metadata["title"]
-        #     sourceLink = source_doc.metadata["source"]
-        #     stringified = "["+title+"]"+"("+sourceLink+")"
-        #     st.write(stringified)

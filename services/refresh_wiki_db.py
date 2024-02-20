@@ -1,12 +1,13 @@
+from langchain_openai import AzureOpenAIEmbeddings
 from extensions.custom_confluence_loader import CustomConfluenceLoader
-from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
 from config import config
 from utils import utility 
 from models import help_db_state
 
-
+openai_api_version="2024-02-15-preview"
+deployment_name='CokeSim-gpt-4-0125-Preview' 
 
 def getWikiDBInfo() -> help_db_state:
     return utility.getHelpDBState(config.HELP_WIKI_DB_DIR)
@@ -14,7 +15,10 @@ def getWikiDBInfo() -> help_db_state:
 def refreshWikiDB() -> help_db_state:
 
     # Create OpenAI embeddings
-    openai_embeddings = OpenAIEmbeddings()
+    openai_embeddings = AzureOpenAIEmbeddings(
+    azure_deployment=deployment_name,
+    openai_api_version=openai_api_version
+)
 
     loader = CustomConfluenceLoader(
         url=config.HELP_WIKI_URL,

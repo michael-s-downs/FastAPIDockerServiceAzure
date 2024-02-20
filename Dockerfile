@@ -4,6 +4,10 @@ FROM python:3.11.5
 # Set up a working directory
 WORKDIR /code
 
+# Set environment variables
+ENV AZURE_OPENAI_API_KEY="YOUR_KEY_HERE"                     
+ENV AZURE_OPENAI_ENDPOINT="YOUR_ENDPOINT_HERE"
+
 # Copy just the requirements into the working directory so it gets cached by itself
 COPY ./requirements.txt /code/requirements.txt
 
@@ -18,6 +22,7 @@ COPY ./models /code/models
 COPY ./services /code/services
 COPY ./tests /code/tests
 COPY ./utils /code/utils
+COPY config.json /code/config.json
 
 # Tell uvicorn to start spin up our code, which will be running inside the container now
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]

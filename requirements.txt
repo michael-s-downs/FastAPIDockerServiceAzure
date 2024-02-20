@@ -73,6 +73,7 @@ kubernetes==29.0.0
 langchain==0.1.6
 langchain-community==0.0.19
 langchain-core==0.1.22
+langchain-openai==0.0.6
 langdetect==1.0.9
 langsmith==0.0.87
 lxml==5.1.0
