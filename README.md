@@ -8,28 +8,17 @@ This is a Python API Server using
 The Structure of the project is roughly conventional:
 
 FastAPIDockerServiceAzure/
-│
-├── app/
-│   ├── __init__.py
-│   └── main.py
-├── models/
-│   ├── __init__.py
-│   ├── query.py
-│   ├── answer.py
-│   └── help_db_state.py
-├── services/
-│   ├── __init__.py
-│   |── query_help_db.py
-│   |── refresh_wiki_db.py
-├── util/
-│   ├── __init__.py
-│   └── utility.py
-├── extensions/
-│   ├── __init__.py
-│   └── custom_confluence_loader.py
-├── config/
-│   ├── __init__.py
-│   └── config.py
-└── tests/
-    ├── __init__.py
-    └── some_future_test.py
+├───.vscode
+├───app
+│   └───__pycache__
+├───config
+│   └───__pycache__
+├───extensions
+│   └───__pycache__
+├───models
+│   └───__pycache__
+├───services
+│   └───__pycache__
+├───tests
+└───utils
+    └───__pycache__
