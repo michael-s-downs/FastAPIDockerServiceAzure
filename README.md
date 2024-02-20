@@ -7,7 +7,7 @@ This is a Python API Server using
 
 The Structure of the project is roughly conventional:
 
-FastAPIDockerServiceAzure/
+```FastAPIDockerServiceAzure/
 ├───.vscode
 ├───app
 │   └───__pycache__
@@ -21,4 +21,4 @@ FastAPIDockerServiceAzure/
 │   └───__pycache__
 ├───tests
 └───utils
-    └───__pycache__
+    └───__pycache__```
