@@ -5,9 +5,10 @@ from langchain.vectorstores import Chroma
 from config import config
 from utils import utility 
 from models import help_db_state
-
+ 
 openai_api_version="2024-02-15-preview"
-deployment_name='CokeSim-gpt-4-0125-Preview' 
+deployment_name="CokeSim-gpt-4-0125-Preview"
+model_name="text-embedding-ada-002-v2" 
 
 def getWikiDBInfo() -> help_db_state:
     return utility.getHelpDBState(config.HELP_WIKI_DB_DIR)
@@ -15,9 +16,14 @@ def getWikiDBInfo() -> help_db_state:
 def refreshWikiDB() -> help_db_state:
 
     # Create OpenAI embeddings
+#     openai_embeddings = AzureOpenAIEmbeddings(
+#     model=model_name,
+#     azure_deployment=deployment_name,
+#     openai_api_version=openai_api_version
+# )
+    
     openai_embeddings = AzureOpenAIEmbeddings(
-    azure_deployment=deployment_name,
-    openai_api_version=openai_api_version
+    model=model_name
 )
 
     loader = CustomConfluenceLoader(
